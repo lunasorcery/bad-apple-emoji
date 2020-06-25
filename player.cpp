@@ -114,6 +114,9 @@ int main()
 
 		int64_t const currFrame = (duration.count() * header.framerate) / 1000;
 
+		if (currFrame >= header.frameCount)
+			break;
+
 		bool frameChanged = false;
 		while (currFrame > lastRenderedFrame)
 		{
@@ -152,4 +155,7 @@ int main()
 
 	// show the cursor
 	fputs("\033[?25h", stdout);
+
+	// clear screen and reset cursor position
+	fputs("\033[2J\033[1;1H", stdout);
 }
