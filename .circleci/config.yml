@@ -1,0 +1,15 @@
+version: 2
+
+workflows:
+  version: 2
+  dist-compile:
+    jobs:
+      - build-player
+
+jobs:
+  build-player:
+    docker:
+      - image: gcc:8.2
+    steps:
+      - checkout
+      - run: make player
