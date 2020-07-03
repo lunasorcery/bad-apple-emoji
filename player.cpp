@@ -1,4 +1,6 @@
 #include <cstdio>
+#include <cstdlib>
+#include <csignal>
 #include <cstring>
 #include <chrono>
 #include <assert.h>
