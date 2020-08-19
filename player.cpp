@@ -7,6 +7,11 @@
 #include <unistd.h>
 #include "data_header.h"
 
+#if defined(_WIN32) || defined(__CYGWIN__)
+#include <thread>
+#define usleep(t) std::this_thread::sleep_for(std::chrono::microseconds(t));
+#endif
+
 using namespace std::chrono;
 
 struct term_size_t {
