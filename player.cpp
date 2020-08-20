@@ -3,6 +3,7 @@
 #include <csignal>
 #include <cstring>
 #include <chrono>
+#include <thread>
 #include <assert.h>
 #include <unistd.h>
 #include "data_header.h"
@@ -151,7 +152,7 @@ int main()
 			// but I don't actually want to sleep by an entire frame's duration
 			// I just want to sleep enough so the loop isn't constantly getting slammed
 			// while hopefully not actually stalling the framerate performance
-			usleep(100000u/header.framerate);
+			std::this_thread::sleep_for(microseconds(100000u/header.framerate));
 		}
 	}
 
